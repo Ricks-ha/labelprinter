@@ -10,11 +10,6 @@ import yaml
 with open("conf.yml", 'r') as conf:
     cfg = yaml.load(conf)
 
-# with open("initial.yml"), 'r') as initial:
-#    cfg = yaml.load(initial)
-printer = cfg['printer']
-print (printer)
-print (cfg['debug'])
 def list_templates():
     template_dir = os.listdir("~/bin/label/templates")
     print('\t')
@@ -89,11 +84,6 @@ def get_args():
                         required=False,
                         action='store_true',
                         help='clean up temp files')
-    parser.add_argument('-C',
-                        '--conf',
-                        required=False,
-                        action='store_true',
-                        help='Load another conf file')
     args = parser.parse_args()
 
     if cfg['printer']:
