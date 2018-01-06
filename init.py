@@ -12,10 +12,10 @@ print ('Where should I place the conf file?')
 
 #print ('Do you want to make the script persistent? Y/n')
 Scriptpersistence = input("So you want the script to be persistent? (y/n:)")
-    if Scriptpersistence=='n':
-        print("Okay dann nicht")
-    else:
-        print("Okay I will make it persistent.") # was auch immer du dann noch fragen willst
-#        subprocess.Popen("sudo cp ./label.py /usr/local/bin/")
-        print("Done")
+if Scriptpersistence=='n':
+    print("Okay dann nicht")
+else:
+    print("Okay I will make it persistent.") # was auch immer du dann noch fragen willst
+    subprocess.Popen("sudo cp ./label.py /usr/local/bin/")
+    print("Done")
 print ('Should I create more than one conf file?')

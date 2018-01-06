@@ -12,11 +12,9 @@ with open("conf.yml", 'r') as conf:
 
 # with open("initial.yml"), 'r') as initial:
 #    cfg = yaml.load(initial)
-printer = cfg['printer']
-print (printer)
-print (cfg['debug'])
+
 def list_templates():
-    template_dir = os.listdir("~/bin/label/templates")
+    template_dir = os.listdir("cfg[templates]")
     print('\t')
     for template in template_dir:
         print('{}{}'.format('   ', template))
@@ -113,15 +111,18 @@ def get_args():
     amount = args.amount
     cleanup = args.c
     templates = args.listtemplates
+    configfile = args.C
 
-    return printer, template, string, printers, preview, printit, debug, amount, cleanup, templates
+    return printer, template, string, printers, preview, printit, debug, amount, cleanup, templates, configfile
 
 
 def main():
 
-    printer, template, string, printers, preview, printit, debug, amount, cleanup, templates = get_args()
+    printer, template, string, printers, preview, printit, debug, amount, cleanup, templates, configfile = get_args()
 
     logging.basicConfig(format='%(message)s')
+
+#    if configfile:
 
     if templates:
         list_templates()
