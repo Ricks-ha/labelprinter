@@ -10,13 +10,7 @@ import yaml
 with open("conf.yml", 'r') as conf:
     cfg = yaml.load(conf)
 
-# with open("initial.yml"), 'r') as initial:
-#    cfg = yaml.load(initial)
-
-#template_dir_variable = cfg['templates']
-
 def list_templates():
-#    template_dir = os.listdir(template_dir_variable)
     template_dir = os.listdir(''~/bin/templates')
     print('\t')
     for template in template_dir:
@@ -65,11 +59,6 @@ def get_args():
                         action='store_true',
                         #metavar='',
                         help='List templates')
-
-#    parser.add_argument('--templatedir',
-#                        required=False,
-#                        action='store',
-#                        help='Specify the template directory')
 
     parser.add_argument('-p',
                         action='store_true',
@@ -121,30 +110,21 @@ def get_args():
     amount = args.amount
     cleanup = args.c
     templates = args.listtemplates
-#    templatedir = args.templatedir
 #    configfile = args.C
 
     return printer, template, string, printers, preview, printit, debug, amount, cleanup, templates,
-#    return printer, template, string, printers, preview, printit, debug, amount, cleanup, templates, templatedir
 #    return printer, template, string, printers, preview, printit, debug, amount, cleanup, templates, configfile
 
 
 def main():
 
-    printer, template, string, printers, preview, printit, debug, amount, cleanup, templates, templatedir = get_args()
+    printer, template, string, printers, preview, printit, debug, amount, cleanup, templates, = get_args()
 #    printer, template, string, printers, preview, printit, debug, amount, cleanup, templates, configfile = get_args()
 
 
     logging.basicConfig(format='%(message)s')
 # Added to main Function
 #    if configfile:
-#    if not templatedir:
-#        logging.error('No template directory specified but --templatedir used.')
-#        exit(0)
-
-#    else:
-#        template_dir_variable = templatedir
-
     if templates:
         list_templates()
         exit(0)
