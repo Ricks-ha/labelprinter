@@ -58,15 +58,18 @@ def get_args():
                         action='store_true',
                         #metavar='',
                         help='List Printer')
+
     parser.add_argument('--listtemplates',
                         required=False,
                         action='store_true',
                         #metavar='',
                         help='List templates')
+
     parser.add_argument('--templatedir',
                         required=False,
                         action='store',
                         help='Specify the template directory')
+
     parser.add_argument('-p',
                         action='store_true',
                         help='preview')
