@@ -18,6 +18,10 @@ from arguments.getargs import get_args
 
 home = os.path.expanduser('~')
 
+# Wir braauchen eine abfrage ob ein config file mit in den parser geschmissen wird.
+
+
+
 with open("conf.yml", 'r') as conf:
     cfg = yaml.load(conf)
 
@@ -46,7 +50,7 @@ def list_printers():
 
 
 def main():
-    """Main funkction."""
+    """Main function."""
 
     printer, textemplate, string, printers, preview, printit, debug, amount, cleanup, templates = get_args()
 
@@ -83,9 +87,9 @@ def main():
         logging.ERROR('Dont use --preview and --printit together')
         exit(0)
 
-    with open('/home/flanagan/.labelprinter/templates/template_' + textemplate, 'r') as template:
+    with open('~/.labelprinter/templates/template_' + textemplate, 'r') as template:
         data = template.read()
-        with open('/home/flanagan/.labelprinter/templates/' + textemplate, 'w') as letter:
+        with open('~/.labelprinter/templates/' + textemplate, 'w') as letter:
             letter.write(LaTeXTemplate(data).substitute(string=string))
         letter.close()
     template.close()
