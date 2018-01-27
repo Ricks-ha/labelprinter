@@ -20,9 +20,10 @@ home = os.path.expanduser('~')
 
 # Wir braauchen eine abfrage ob ein config file mit in den parser geschmissen wird.
 
+# workaround 
 
-
-with open("conf.yml", 'r') as conf:
+#with open("/.labelprinter/conf.yml", 'r') as conf:
+with open(os.path.expanduser("~/.labelprinter/conf.yml"), 'r') as conf:
     cfg = yaml.load(conf)
 
 
@@ -33,9 +34,11 @@ class LaTeXTemplate(string.Template):
 
 
 def list_templates():
-    template_dir = os.listdir("~/bin/label/templates")
+#    template_dir = os.listdir("~/bin/label/templates")
+#    template_dir = os.listdir("~/.labelprinter/templates")
+    list_template_dir = os.listdir(template_dir)
     print('\t')
-    for template in template_dir:
+    for template in list_template_dir:
         print('{}{}'.format('   ', template))
     print('\t')
 
