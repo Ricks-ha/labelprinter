@@ -29,7 +29,7 @@ class LaTeXTemplate(string.Template):
 
 
 def list_templates():
-    template_dir = os.listdir("~/bin/label/templates")
+    template_dir = os.listdir("~/bin/label/templates") # Wir koennten diesen eintrag von der conf.yml holen und den vorher vom init script reinschreiben lassen
     print('\t')
     for template in template_dir:
         print('{}{}'.format('   ', template))
@@ -46,7 +46,7 @@ def list_printers():
 
 
 def main():
-    """Main funkction."""
+    """Main function."""
 
     printer, textemplate, string, printers, preview, printit, debug, amount, cleanup, templates = get_args()
 
