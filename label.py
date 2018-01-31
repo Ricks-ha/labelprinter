@@ -18,7 +18,12 @@ from arguments.getargs import get_args
 
 home = os.path.expanduser('~')
 
-with open("conf.yml", 'r') as conf:
+# Wir braauchen eine abfrage ob ein config file mit in den parser geschmissen wird.
+
+# workaround 
+
+#with open("/.labelprinter/conf.yml", 'r') as conf:
+with open(os.path.expanduser("~/.labelprinter/conf.yml"), 'r') as conf:
     cfg = yaml.load(conf)
 
 
@@ -29,9 +34,15 @@ class LaTeXTemplate(string.Template):
 
 
 def list_templates():
+<<<<<<< HEAD
     template_dir = os.listdir("~/bin/label/templates") # Wir koennten diesen eintrag von der conf.yml holen und den vorher vom init script reinschreiben lassen
+=======
+#    template_dir = os.listdir("~/bin/label/templates")
+#    template_dir = os.listdir("~/.labelprinter/templates")
+    list_template_dir = os.listdir(template_dir)
+>>>>>>> 7933809bfdb656fb4ab5087a6501082e198cc04a
     print('\t')
-    for template in template_dir:
+    for template in list_template_dir:
         print('{}{}'.format('   ', template))
     print('\t')
 
@@ -83,9 +94,9 @@ def main():
         logging.ERROR('Dont use --preview and --printit together')
         exit(0)
 
-    with open('/home/flanagan/.labelprinter/templates/template_' + textemplate, 'r') as template:
+    with open('~/.labelprinter/templates/template_' + textemplate, 'r') as template:
         data = template.read()
-        with open('/home/flanagan/.labelprinter/templates/' + textemplate, 'w') as letter:
+        with open('~/.labelprinter/templates/' + textemplate, 'w') as letter:
             letter.write(LaTeXTemplate(data).substitute(string=string))
         letter.close()
     template.close()

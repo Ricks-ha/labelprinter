@@ -65,6 +65,14 @@ def get_args():
                         required=False,
                         action='store_true',
                         help='clean up temp files')
+
+
+#    parser.add_argument('-C',
+#                        '--conf',
+#                        required=False,
+#                        action='store_true',
+#                        help='Load another conf file')
+
     args = parser.parse_args()
 
     printer = args.printer
