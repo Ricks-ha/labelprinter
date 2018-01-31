@@ -34,11 +34,10 @@ class LaTeXTemplate(string.Template):
 
 
 def list_templates():
-    template_dir = os.listdir("~/bin/label/templates") # Wir koennten diesen eintrag von der conf.yml holen und den vorher vom init script reinschreiben lassen
+#    template_dir = os.listdir("~/bin/label/templates") # Wir koennten diesen eintrag von der conf.yml holen und den vorher vom init script reinschreiben lassen
 #    template_dir = os.listdir("~/bin/label/templates")
 #    template_dir = os.listdir("~/.labelprinter/templates")
     list_template_dir = os.listdir(template_dir)
->>>>>>> 7933809bfdb656fb4ab5087a6501082e198cc04a
     print('\t')
     for template in list_template_dir:
         print('{}{}'.format('   ', template))
