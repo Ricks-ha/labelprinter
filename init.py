@@ -3,10 +3,11 @@
 import yaml
 import os
 
-def mkkvdir(): 
+def mkvdir(): 
     mk_usr_command = 'sudo mkdir /usr/bin/labelprinter'
     cpcommand = 'sudo cp label.py /usr/bin/labelprinter/label'
-    p = os.system('echo %s|sudo -S %s' % (sudopw, mk_usr_command, cpcommand))
+    p = os.system('echo %s|sudo -S %s' % (sudopw, mk_usr_command))
+    p = os.system('echo %s|sudo -S %s' % (sudopw, cpcommand))
 
 def scriptpersistenc():
     print ('This step is not required if you want to use it just in the repository, but it is necessary when you want to use it persistent.')
@@ -18,6 +19,7 @@ def scriptpersistenc():
         print ('okay')
         print ('In order to make the script persistent the SUDO password is needed.')
         print ('Please type in below')
+        global sudopw
         sudopw=input()
         print("Okay I will make it persistent.")
         mkvdir()

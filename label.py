@@ -10,7 +10,7 @@ import logging
 import os
 import string
 
-import cups
+#import cups
 
 import yaml
 
@@ -24,7 +24,8 @@ home = os.path.expanduser('~')
 
 #with open("/.labelprinter/conf.yml", 'r') as conf:
 with open(os.path.expanduser("~/.labelprinter/conf.yml"), 'r') as conf:
-    cfg = yaml.load(conf)
+    cfg = yaml.safe_load(conf)
+    template_dir = cfg['template_dir']
 
 
 class LaTeXTemplate(string.Template):
@@ -35,9 +36,8 @@ class LaTeXTemplate(string.Template):
 
 def list_templates():
 #    template_dir = os.listdir("~/bin/label/templates") # Wir koennten diesen eintrag von der conf.yml holen und den vorher vom init script reinschreiben lassen
-#    template_dir = os.listdir("~/bin/label/templates")
 #    template_dir = os.listdir("~/.labelprinter/templates")
-    list_template_dir = os.listdir(template_dir)
+    list_template_dir = os.listdir(os.path.expanduser(template_dir))
     print('\t')
     for template in list_template_dir:
         print('{}{}'.format('   ', template))
