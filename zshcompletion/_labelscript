@@ -1,0 +1,14 @@
+#compdef _labelscript label
+
+function _labelscript {
+    local line
+    
+    _arguments '-t[template]' '--template[template]' \
+        '--printer[printer]' \
+        '-s[string]' '--string[string]' \
+        '--listprinter[list the printers]' \
+        '--listtemplates[list available templates]' \
+        '-p[preview]'        \
+        '-P[printit]' '--printit[printit]' \
+        '-d[debug]' '--debug[debug]' \
+        '-a[amount]' '--amount[amount]' }        

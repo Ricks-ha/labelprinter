@@ -70,9 +70,10 @@ def zsh_completion():
         print('Okay')
     else:
         print('Okay')
-        p = os.system('cat ./zshcompletion/_labelscript >> .zshrc')
+	cpcommand = 'cp ./zshcompletion/_labelscript /usr/share/zsh/functions/Completion/Linux/'
+        p = os.system('echo %s|sudo -S %s' % (sudopw, cpcommand))
         print('Done')
-        
+
 def inst():
     scriptpersistenc()
     temp_dir()
