@@ -8,7 +8,7 @@ import re
 
 def mkvdir(): 
     mk_usr_command = 'sudo mkdir /usr/bin/labelprinter'
-    cpcommand = 'sudo cp -r label.py arguments tex  /usr/bin/labelprinter/'
+    cpcommand = 'sudo cp -r label.py arguments tex  /usr/bin/labelprinter'
     p = os.system('echo %s|sudo -S %s' % (sudopw, mk_usr_command))
     p = os.system('echo %s|sudo -S %s' % (sudopw, cpcommand))
 
@@ -19,7 +19,7 @@ def scriptpersistenc():
     if Scriptpersistence=='n':
         print('Okay')
     else:
-        print ('okay')
+        print ('Okay')
         print ('In order to make the script persistent the SUDO password is needed.')
         global sudopw
         sudopw=input()
@@ -61,13 +61,25 @@ def conf():
 def version():
     p = os.system('wget -q https://priv.ricksha.eu/Update/version.txt')
     p = os.system('mv version.txt ~/.labelprinter/version.txt')
-    
+ 
+def zsh_completion():
+    print ('Do you want to use the autocompletion for the labelscript? Y/n')
+    print ('WARNING: This step is right now only supported for the Zsh')
+    inst_completion = input()
+    if inst_completion=='n':
+        print('Okay')
+    else:
+        print('Okay')
+        p = os.system('cat ./zshcompletion/_labelscript >> .zshrc')
+        print('Done')
+        
 def inst():
     scriptpersistenc()
     temp_dir()
     printer_def()
     conf()
     version()
+    zsh_completion()
     print('Installation completed')
 
 def uninstall():
